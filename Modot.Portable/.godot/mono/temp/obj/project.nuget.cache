@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yWk9l70tYvVj6SZYDO+chXHejmedwsj4yZ+XfUht+U5Tb/wtLXV0v1t/D80fCVB1gzqN/N4RafU/m4aF3h/e7A==",
+  "dgSpecHash": "TU6soVc3ik0=",
   "success": true,
-  "projectFilePath": "C:\\Dev\\GodotSeries\\Library\\Modot\\Modot.Portable\\Modot.Portable.csproj",
+  "projectFilePath": "C:\\Dev\\GodotSeries\\2DGame\\TownerDefenseGame\\Modot\\Modot.Portable\\Modot.Portable.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\14276\\.nuget\\packages\\godot.sourcegenerators\\4.2.2\\godot.sourcegenerators.4.2.2.nupkg.sha512",
     "C:\\Users\\14276\\.nuget\\packages\\godotsharp\\4.2.2\\godotsharp.4.2.2.nupkg.sha512",

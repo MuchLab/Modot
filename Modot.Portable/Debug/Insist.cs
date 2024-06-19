@@ -2,7 +2,7 @@
 
 namespace Modot.Portable;
 
-public static class Insist
+public static partial class Insist
 {
     [Conditional("DEBUG")]
 	[DebuggerHidden]

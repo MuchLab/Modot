@@ -6,4 +6,7 @@
         <EnableDynamicLoading>true</EnableDynamicLoading>
         <LangVersion>12</LangVersion>
     </PropertyGroup>
+    <ItemGroup>
+      <Content Include="T4Templates\ContentPathGenerator.tt" />
+    </ItemGroup>
 </Project>
