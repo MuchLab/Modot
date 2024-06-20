@@ -1,0 +1,6 @@
+C:\Dev\Godot\TestProject\GameSource\Modot\Modot.Persistence\obj\Debug\net8.0\Modot.Persistence.csproj.AssemblyReference.cache
+C:\Dev\Godot\TestProject\GameSource\Modot\Modot.Persistence\obj\Debug\net8.0\Modot.Persistence.GeneratedMSBuildEditorConfig.editorconfig
+C:\Dev\Godot\TestProject\GameSource\Modot\Modot.Persistence\obj\Debug\net8.0\Modot.Persistence.AssemblyInfoInputs.cache
+C:\Dev\Godot\TestProject\GameSource\Modot\Modot.Persistence\obj\Debug\net8.0\Modot.Persistence.AssemblyInfo.cs
+C:\Dev\Godot\TestProject\GameSource\Modot\Modot.Persistence\obj\Debug\net8.0\Modot.Persistence.csproj.CoreCompileInputs.cache
+C:\Dev\Godot\TestProject\GameSource\Modot\Modot.Persistence\obj\Debug\net8.0\Modot.Persistence.sourcelink.json

@@ -10,9 +10,9 @@ namespace Modot.Portable;
 public partial class Scene : Node
 {
     public static Scene Instance { get; private set; }
-    private static SceneTransition _sceneTransition;
 
     private static List<GlobalManager> GlobalManagers = new List<GlobalManager>();
+    private static SceneTransition _sceneTransition;
 
     #region SceneTransition
 
@@ -84,6 +84,8 @@ public partial class Scene : Node
     /// </summary>
     public override void _Ready()
     {
+        var entity2DGlobalManager = new Entity2DGlobalManager(GetNodes<Entity2D>());
+        RegisterGlobalManager(entity2DGlobalManager);
     }
     
     public override void _Process(double delta)
@@ -151,6 +153,7 @@ public partial class Scene : Node
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
     public List<T> GetNodes<T>(string name) where T : Node => FindChildren(name).OfType<T>().ToList();
+    public List<T> GetNodes<T>() where T : Node => FindChildren("*").OfType<T>().ToList();
 
     
     /// <summary>

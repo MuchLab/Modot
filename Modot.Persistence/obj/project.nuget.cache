@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "E+p+ZBtL0mTSHK/MSnQx1JS6lD5aIv0EnN4IjXsiKa6iGXa3bJFoPrSteq8eEce4lSZgFQXmqeXGqo+5PnxOIQ==",
+  "success": true,
+  "projectFilePath": "C:\\Dev\\Godot\\TestProject\\GameSource\\Modot\\Modot.Persistence\\Modot.Persistence.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\lxiang\\.nuget\\packages\\miniexcel\\1.32.1\\miniexcel.1.32.1.nupkg.sha512"
+  ],
+  "logs": []
+}

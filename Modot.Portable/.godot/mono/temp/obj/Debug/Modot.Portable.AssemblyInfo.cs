@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Modot.Portable")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9fb726aa244d2dac1a13c133c5fdff67c1217ec5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+43c6fd9af940fbc19564e81a122e1af388fce84e")]
 [assembly: System.Reflection.AssemblyProductAttribute("Modot.Portable")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Modot.Portable")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
