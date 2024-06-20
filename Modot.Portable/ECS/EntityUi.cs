@@ -1,10 +1,9 @@
-using System;
 using System.Collections.Generic;
 using Godot;
 
 namespace Modot.Portable;
 
-public partial class Entity2D : Node2D, IEntity {
+public partial class EntityUi : Control, IEntity {
     
     /// <summary>
     /// 拥有该实体的场景
@@ -40,6 +39,11 @@ public partial class Entity2D : Node2D, IEntity {
         newId++;
     }
 
+    public override void _Ready()
+    {
+
+    }
+
     private void SetEnabled(bool enabled){
 
     }
@@ -61,4 +65,19 @@ public partial class Entity2D : Node2D, IEntity {
     }
 
     public bool HasTag(string tag) => Tags.Contains(tag);
+
+    #region Node
+    protected bool TryFindNode<T>(string nodeName, out T node) where T : Node{
+        node = FindNode<T>(nodeName);
+        if(node != null)
+            return true;
+        return false;
+    }
+
+    protected T FindNode<T>(string nodeName) where T : Node{
+        var node = FindChild(nodeName) as T;
+        Insist.IsNotNull(node != null, $"Can't find a node with {nodeName}");
+        return node;
+    }
+    #endregion
 }

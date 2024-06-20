@@ -10,7 +10,8 @@
         "dependencies": {
           "Godot.SourceGenerators": "4.2.2",
           "GodotSharp": "4.2.2",
-          "GodotSharpEditor": "4.2.2"
+          "GodotSharpEditor": "4.2.2",
+          "MiniExcel": "1.32.1"
         },
         "runtime": {
           "Modot.Portable.dll": {}
@@ -33,6 +34,14 @@
           "lib/net6.0/GodotSharpEditor.dll": {
             "assemblyVersion": "4.2.2.0",
             "fileVersion": "4.2.2.0"
+          }
+        }
+      },
+      "MiniExcel/1.32.1": {
+        "runtime": {
+          "lib/net6.0/MiniExcel.dll": {
+            "assemblyVersion": "1.32.1.0",
+            "fileVersion": "1.32.1.0"
           }
         }
       }
@@ -64,6 +73,13 @@
       "sha512": "sha512-nNXntakfzSuH5AnQKBpznN8pF+3uYj9XmGIEMeR+6GOzg8gxx2b09bhVZm3q6onzldPEoo1YChBRL1zWWjOM6Q==",
       "path": "godotsharpeditor/4.2.2",
       "hashPath": "godotsharpeditor.4.2.2.nupkg.sha512"
+    },
+    "MiniExcel/1.32.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-givinRByTg0nQAktcFSaLmIt9Ki+LwYjlwtSYXuwQdoyAy8Z3RfBnKR/UA/79mWmb8wKJgPlnZf87pvOBpdZ/g==",
+      "path": "miniexcel/1.32.1",
+      "hashPath": "miniexcel.1.32.1.nupkg.sha512"
     }
   }
 }

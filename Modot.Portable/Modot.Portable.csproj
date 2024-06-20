@@ -4,9 +4,15 @@
         <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'android' ">net7.0</TargetFramework>
         <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'ios' ">net8.0</TargetFramework>
         <EnableDynamicLoading>true</EnableDynamicLoading>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
         <LangVersion>12</LangVersion>
     </PropertyGroup>
     <ItemGroup>
       <Content Include="T4Templates\ContentPathGenerator.tt" />
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="MiniExcel" Version="1.32.1" />
     </ItemGroup>
 </Project>

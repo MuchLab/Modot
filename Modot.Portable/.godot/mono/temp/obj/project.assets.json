@@ -36,6 +36,15 @@
             "related": ".xml"
           }
         }
+      },
+      "MiniExcel/1.32.1": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/MiniExcel.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/MiniExcel.dll": {}
+        }
       }
     }
   },
@@ -78,34 +87,58 @@
         "lib/net6.0/GodotSharpEditor.dll",
         "lib/net6.0/GodotSharpEditor.xml"
       ]
+    },
+    "MiniExcel/1.32.1": {
+      "sha512": "givinRByTg0nQAktcFSaLmIt9Ki+LwYjlwtSYXuwQdoyAy8Z3RfBnKR/UA/79mWmb8wKJgPlnZf87pvOBpdZ/g==",
+      "type": "package",
+      "path": "miniexcel/1.32.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.png",
+        "lib/net45/MiniExcel.dll",
+        "lib/net6.0/MiniExcel.dll",
+        "lib/netstandard2.0/MiniExcel.dll",
+        "miniexcel.1.32.1.nupkg.sha512",
+        "miniexcel.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
       "Godot.SourceGenerators >= 4.2.2",
       "GodotSharp >= 4.2.2",
-      "GodotSharpEditor >= 4.2.2"
+      "GodotSharpEditor >= 4.2.2",
+      "MiniExcel >= 1.32.1"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\lxiang\\.nuget\\packages\\": {}
+    "C:\\Users\\14276\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Dev\\Godot\\TestProject\\GameSource\\Modot\\Modot.Portable\\Modot.Portable.csproj",
+      "projectUniqueName": "C:\\Dev\\GodotSeries\\2DGame\\TownerDefenseGame\\Modot\\Modot.Portable\\Modot.Portable.csproj",
       "projectName": "Modot.Portable",
-      "projectPath": "c:\\Dev\\Godot\\TestProject\\GameSource\\Modot\\Modot.Portable\\Modot.Portable.csproj",
-      "packagesPath": "C:\\Users\\lxiang\\.nuget\\packages\\",
-      "outputPath": "c:\\Dev\\Godot\\TestProject\\GameSource\\Modot\\Modot.Portable\\.godot\\mono\\temp\\obj\\",
+      "projectPath": "C:\\Dev\\GodotSeries\\2DGame\\TownerDefenseGame\\Modot\\Modot.Portable\\Modot.Portable.csproj",
+      "packagesPath": "C:\\Users\\14276\\.nuget\\packages\\",
+      "outputPath": "C:\\Dev\\GodotSeries\\2DGame\\TownerDefenseGame\\Modot\\Modot.Portable\\.godot\\mono\\temp\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\lxiang\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\14276\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -140,6 +173,10 @@
           "GodotSharpEditor": {
             "target": "Package",
             "version": "[4.2.2, )"
+          },
+          "MiniExcel": {
+            "target": "Package",
+            "version": "[1.32.1, )"
           }
         },
         "imports": [
@@ -158,7 +195,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
