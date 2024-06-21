@@ -14,6 +14,8 @@ public partial class Scene : Node
     private static List<GlobalManager> GlobalManagers = new List<GlobalManager>();
     private static SceneTransition _sceneTransition;
 
+    public Vector2 SCALER = new Vector2(5f, 5f);
+
     #region SceneTransition
 
     /// <summary>
@@ -84,7 +86,7 @@ public partial class Scene : Node
     /// </summary>
     public override void _Ready()
     {
-        var entity2DGlobalManager = new Entity2DGlobalManager(GetNodes<Entity2D>());
+        var entity2DGlobalManager = new Entity2DGlobalManager(FindNodes<Entity2D>());
         RegisterGlobalManager(entity2DGlobalManager);
     }
     
@@ -117,7 +119,7 @@ public partial class Scene : Node
     /// <param name="includeInternal">是否会查找除子节点外的其他节点</param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    public T GetNode<T>(string name) where T : Node
+    public T FindNode<T>(string name) where T : Node
     {
         T node = null;
         var child = FindChild(name);
@@ -135,7 +137,7 @@ public partial class Scene : Node
     /// <param name="includeInternal">是否会查找除子节点外的其他节点</param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    public T GetNode<T>(Node parent, string name) where T : Node
+    public T FindNode<T>(Node parent, string name) where T : Node
     {
         T node = null;
         var child = parent.FindChild(name);
@@ -145,6 +147,14 @@ public partial class Scene : Node
         return node;
     }
 
+    public bool TryFindNode<T>(string name, out T node) where T : Node{
+        node = FindChild(name) as T;
+        if (node != null)
+            return true;
+        return false;
+
+    }
+
     /// <summary>
     /// 获取节点列表
     /// </summary>
@@ -152,8 +162,8 @@ public partial class Scene : Node
     /// <param name="includeInternal"></param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    public List<T> GetNodes<T>(string name) where T : Node => FindChildren(name).OfType<T>().ToList();
-    public List<T> GetNodes<T>() where T : Node => FindChildren("*").OfType<T>().ToList();
+    public List<T> FindNodes<T>(string name) where T : Node => FindChildren(name).OfType<T>().ToList();
+    public List<T> FindNodes<T>() where T : Node => FindChildren("*").OfType<T>().ToList();
 
     
     /// <summary>
