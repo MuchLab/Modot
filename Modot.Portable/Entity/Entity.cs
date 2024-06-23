@@ -4,7 +4,7 @@ using Godot;
 
 namespace Modot.Portable;
 
-public partial class Entity2D : Node2D, IEntity {
+public partial class Entity : Node, IEntity {
 
     /// <summary>
     /// 实体的名称

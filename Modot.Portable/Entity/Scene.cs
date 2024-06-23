@@ -14,8 +14,6 @@ public partial class Scene : Node
     private static List<GlobalManager> GlobalManagers = new List<GlobalManager>();
     private static SceneTransition _sceneTransition;
 
-    public Vector2 SCALER = new Vector2(5f, 5f);
-
     #region SceneTransition
 
     /// <summary>
