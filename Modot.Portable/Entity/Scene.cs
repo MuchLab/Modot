@@ -53,6 +53,13 @@ public partial class Scene : Node
         GlobalManagers.Remove(manager);
         manager.Enabled = false;
     }
+
+    public static void UnregisterGlobalManager<T>() where T : GlobalManager{
+        var manager = GetGlobalManager<T>();
+        Insist.IsNotNull(manager, $"There is not a manager typed {typeof(T).Name}");
+        UnregisterGlobalManager(manager);
+        
+    }
     
     /// <summary>
     /// 按类型获取一个全局管理器
@@ -60,7 +67,10 @@ public partial class Scene : Node
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
     public static T GetGlobalManager<T>() where T : GlobalManager =>
-        GlobalManagers.First((manager) => manager is T) as T;
+        GlobalManagers.First(manager => manager is T) as T;
+
+    public static bool HasGlobalManager<T>() where T : GlobalManager =>
+        GlobalManagers.Any(manager => manager is T);
 
     #endregion
 
@@ -82,11 +92,7 @@ public partial class Scene : Node
     /// <summary>
     /// 场景初始化操作
     /// </summary>
-    public override void _Ready()
-    {
-        var entity2DGlobalManager = new Entity2DGlobalManager(FindNodes<Entity2D>());
-        RegisterGlobalManager(entity2DGlobalManager);
-    }
+    public override void _Ready(){}
     
     public override void _Process(double delta)
     {
@@ -173,26 +179,6 @@ public partial class Scene : Node
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
     public List<T> GetNodes<T>(Node parent, string name) where T : Node => parent.FindChildren(name).OfType<T>().ToList();
-
-    #endregion
-    
-    #region Input
-
-    public override void _Input(InputEvent @event)
-    {
-        if (@event is InputEventKey keyEvent && keyEvent.Pressed)
-        {
-            if (keyEvent.Keycode == Key.T)
-            {
-                StartSceneTransition(new DefaultSceneTransition(() => ResourceLoader.Load<PackedScene>("res://Content/Scenes/test1.tscn")));
-                
-            }
-            if (keyEvent.Keycode == Key.Y)
-            {
-                StartSceneTransition(new DefaultSceneTransition(() => ResourceLoader.Load<PackedScene>("res://Content/Scenes/test2.tscn")));
-            }
-        }
-    }
 
     #endregion
 }
