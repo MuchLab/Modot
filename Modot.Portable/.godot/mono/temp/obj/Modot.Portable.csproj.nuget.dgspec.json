@@ -1,32 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Dev\\GodotSeries\\2DGame\\TownerDefenseGame\\Modot\\Modot.Portable\\Modot.Portable.csproj": {}
+    "C:\\Dev\\Godot\\TownerDefenseGame\\Modot\\Modot.Portable\\Modot.Portable.csproj": {}
   },
   "projects": {
-    "C:\\Dev\\GodotSeries\\2DGame\\TownerDefenseGame\\Modot\\Modot.Portable\\Modot.Portable.csproj": {
+    "C:\\Dev\\Godot\\TownerDefenseGame\\Modot\\Modot.Portable\\Modot.Portable.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Dev\\GodotSeries\\2DGame\\TownerDefenseGame\\Modot\\Modot.Portable\\Modot.Portable.csproj",
+        "projectUniqueName": "C:\\Dev\\Godot\\TownerDefenseGame\\Modot\\Modot.Portable\\Modot.Portable.csproj",
         "projectName": "Modot.Portable",
-        "projectPath": "C:\\Dev\\GodotSeries\\2DGame\\TownerDefenseGame\\Modot\\Modot.Portable\\Modot.Portable.csproj",
-        "packagesPath": "C:\\Users\\14276\\.nuget\\packages\\",
-        "outputPath": "C:\\Dev\\GodotSeries\\2DGame\\TownerDefenseGame\\Modot\\Modot.Portable\\.godot\\mono\\temp\\obj\\",
+        "projectPath": "C:\\Dev\\Godot\\TownerDefenseGame\\Modot\\Modot.Portable\\Modot.Portable.csproj",
+        "packagesPath": "C:\\Users\\lxiang\\.nuget\\packages\\",
+        "outputPath": "C:\\Dev\\Godot\\TownerDefenseGame\\Modot\\Modot.Portable\\.godot\\mono\\temp\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\14276\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\lxiang\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -83,7 +76,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
