@@ -1,13 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "Of7NKyg1jVvGLBLia4ieMfWFZXLBKtRQmVhlGwWPWFgc0DzmJHJc6pHqTz3pyvuGBdNU7/P/4POu4bhKD3lUPg==",
+  "dgSpecHash": "uBk3/Dqx+SE=",
   "success": true,
-  "projectFilePath": "C:\\Dev\\Godot\\TownerDefenseGame\\Modot\\Modot.Portable\\Modot.Portable.csproj",
+  "projectFilePath": "C:\\Dev\\GodotSeries\\2DGame\\TownerDefenseGame\\Modot\\Modot.Portable\\Modot.Portable.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\lxiang\\.nuget\\packages\\godot.sourcegenerators\\4.2.2\\godot.sourcegenerators.4.2.2.nupkg.sha512",
-    "C:\\Users\\lxiang\\.nuget\\packages\\godotsharp\\4.2.2\\godotsharp.4.2.2.nupkg.sha512",
-    "C:\\Users\\lxiang\\.nuget\\packages\\godotsharpeditor\\4.2.2\\godotsharpeditor.4.2.2.nupkg.sha512",
-    "C:\\Users\\lxiang\\.nuget\\packages\\miniexcel\\1.32.1\\miniexcel.1.32.1.nupkg.sha512"
+    "C:\\Users\\14276\\.nuget\\packages\\godot.sourcegenerators\\4.2.2\\godot.sourcegenerators.4.2.2.nupkg.sha512",
+    "C:\\Users\\14276\\.nuget\\packages\\godotsharp\\4.2.2\\godotsharp.4.2.2.nupkg.sha512",
+    "C:\\Users\\14276\\.nuget\\packages\\godotsharpeditor\\4.2.2\\godotsharpeditor.4.2.2.nupkg.sha512",
+    "C:\\Users\\14276\\.nuget\\packages\\miniexcel\\1.32.1\\miniexcel.1.32.1.nupkg.sha512",
+    "C:\\Users\\14276\\.nuget\\packages\\yamldotnet\\15.3.0\\yamldotnet.15.3.0.nupkg.sha512"
   ],
   "logs": []
 }

@@ -50,3 +50,4 @@ C:\Dev\Godot\TownerDefenseGame\Modot\Modot.Portable\.godot\mono\temp\obj\Debug\r
 C:\Dev\Godot\TownerDefenseGame\Modot\Modot.Portable\.godot\mono\temp\obj\Debug\Modot.Portable.pdb
 C:\Dev\Godot\TownerDefenseGame\Modot\Modot.Portable\.godot\mono\temp\obj\Debug\Modot.Portable.genruntimeconfig.cache
 C:\Dev\Godot\TownerDefenseGame\Modot\Modot.Portable\.godot\mono\temp\obj\Debug\ref\Modot.Portable.dll
+C:\Dev\GodotSeries\2DGame\TownerDefenseGame\Modot\Modot.Portable\.godot\mono\temp\bin\Debug\YamlDotNet.dll
