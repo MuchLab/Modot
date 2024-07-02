@@ -49,7 +49,7 @@ public class GlobalManager
     /// <summary>
     /// 在Scene.update之前调用
     /// </summary>
-    public virtual void Update()
+    public virtual void Update(float delta)
     {
     }
 }

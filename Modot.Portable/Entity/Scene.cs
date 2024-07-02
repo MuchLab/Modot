@@ -14,6 +14,8 @@ public partial class Scene : Node
     private static List<GlobalManager> GlobalManagers = new List<GlobalManager>();
     private static SceneTransition _sceneTransition;
 
+    public virtual void Initialized(){}
+
     #region SceneTransition
 
     /// <summary>
@@ -67,10 +69,17 @@ public partial class Scene : Node
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
     public static T GetGlobalManager<T>() where T : GlobalManager =>
-        GlobalManagers.First(manager => manager is T) as T;
+        GlobalManagers.FirstOrDefault(manager => manager is T) as T;
 
     public static bool HasGlobalManager<T>() where T : GlobalManager =>
         GlobalManagers.Any(manager => manager is T);
+    
+    public static bool TryGetGlobalManager<T>(out T globalManager) where T : GlobalManager {
+        globalManager = GetGlobalManager<T>();
+        if(globalManager != null)
+            return true;
+        return false;
+    }
 
     #endregion
 
@@ -92,16 +101,19 @@ public partial class Scene : Node
     /// <summary>
     /// 场景初始化操作
     /// </summary>
-    public override void _Ready(){}
+    public override void _Ready(){
+        Initialized();
+    }
     
     public override void _Process(double delta)
     {
         foreach (var globalManager in GlobalManagers)
         {
             if(globalManager.Enabled)
-                globalManager.Update();
+                globalManager.Update((float)delta);
         }
         _sceneTransition?.OnBeginTransition();
+        
     }
 
     /// <summary>
