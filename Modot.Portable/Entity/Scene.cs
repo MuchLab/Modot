@@ -58,9 +58,8 @@ public partial class Scene : Node
 
     public static void UnregisterGlobalManager<T>() where T : GlobalManager{
         var manager = GetGlobalManager<T>();
-        Insist.IsNotNull(manager, $"There is not a manager typed {typeof(T).Name}");
-        UnregisterGlobalManager(manager);
-        
+        if(manager != null)
+            UnregisterGlobalManager(manager);
     }
     
     /// <summary>

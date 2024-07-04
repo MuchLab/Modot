@@ -69,4 +69,19 @@ public partial class Entity2D : Node2D, IEntity {
         return node;
     }
     #endregion
+
+    #region Node2D Utils
+    protected bool IsInsideViewport(Vector2 position, float offset){
+        var size = GetViewport().GetVisibleRect().Size;
+        if(position.X + offset < 0)
+            return false;
+        if(position.X - offset > size.X)
+            return false;
+        if(position.Y + offset < 0)
+            return false;
+        if(position.Y - offset > size.Y)
+            return false;
+        return true;
+    }
+    #endregion
 }
