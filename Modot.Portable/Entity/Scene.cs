@@ -7,11 +7,10 @@ using Godot;
 
 namespace Modot.Portable;
 
-public partial class Scene : Node
+public partial class Scene : Node2D
 {
     public static Scene Instance { get; private set; }
-
-    private static List<GlobalManager> GlobalManagers = new List<GlobalManager>();
+    public static List<GlobalManager> GlobalManagers { get; private set; } = new List<GlobalManager>();
     private static SceneTransition _sceneTransition;
 
     public virtual void Initialized(){}

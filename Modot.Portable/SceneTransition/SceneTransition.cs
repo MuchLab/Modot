@@ -33,6 +33,11 @@ public abstract class SceneTransition
 
     public virtual void OnBeginTransition()
     {
+        foreach (var globalManager in Scene.GlobalManagers)
+        {
+            if(globalManager.EraseWhenTransition)
+                Scene.UnregisterGlobalManager(globalManager);
+        }
         OnSceneObscured?.Invoke();
         var packScene = sceneLoadAction?.Invoke();
         Scene.Instance.GetTree().ChangeSceneToPacked(packScene);

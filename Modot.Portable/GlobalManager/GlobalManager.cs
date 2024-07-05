@@ -2,6 +2,18 @@
 
 public class GlobalManager
 {
+    private bool _eraseWhenTransition;
+    public bool EraseWhenTransition
+    {
+        get => _eraseWhenTransition;
+        set => SetEraseWhenTransition(value);
+    }
+
+    private void SetEraseWhenTransition(bool eraseWhenTransition){
+        if (_eraseWhenTransition != eraseWhenTransition)
+            _eraseWhenTransition = eraseWhenTransition;
+    }
+
     /// <summary>
     /// 当true时，GlobalManager可用，否则不可用
     /// </summary>
@@ -31,6 +43,11 @@ public class GlobalManager
     }
 
     bool _enabled;
+
+    public GlobalManager(bool enable = true, bool erase = true){
+        _enabled = enable;
+        _eraseWhenTransition = erase;
+    }
 
     /// <summary>
     /// 当GlobalManager可用时调用
