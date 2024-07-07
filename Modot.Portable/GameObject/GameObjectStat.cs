@@ -75,25 +75,27 @@ public class GameObjectStat {
     /// <returns></returns>
     protected virtual float CalculateFinalValue(){
         float finalValue = BaseValue;
-        float sumPercentAdd = 0;
-        for (int i = 0; i < _statModifiers.Count; i++)
-        {
+        float sumPercent = 0;
+        for (int i = 0; i < _statModifiers.Count; i++){
             StatModifier mod = _statModifiers[i];
     
-            if (mod.Type == StatModifierType.Flat)
-            {
+            if (mod.Type == StatModifierType.FlatAdd){
                 finalValue += mod.Value;
             }
-            else if (mod.Type == StatModifierType.PercentMult)
-            {
+            else if(mod.Type == StatModifierType.FlatReduce){
+                finalValue -= mod.Value;
+            }
+            else if (mod.Type == StatModifierType.PercentMult){
                 finalValue *= 1 + mod.Value;
             }
-            else if (mod.Type == StatModifierType.PercentAdd){
-                sumPercentAdd += mod.Value;
-                if (i + 1 >= _statModifiers.Count || _statModifiers[i + 1].Type != StatModifierType.PercentAdd)
-                {
-                    finalValue *= 1 + sumPercentAdd;
-                    sumPercentAdd = 0;
+            else{
+                if(mod.Type == StatModifierType.PercentAdd)
+                    sumPercent += mod.Value;
+                if(mod.Type == StatModifierType.PercentReduce)
+                    sumPercent -= mod.Value;
+                if (i + 1 >= _statModifiers.Count || _statModifiers[i + 1].Type != StatModifierType.PercentAdd){
+                    finalValue *= 1 + sumPercent;
+                    sumPercent = 0;
                 }
             }
         }

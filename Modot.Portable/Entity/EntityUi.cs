@@ -10,33 +10,13 @@ public partial class EntityUi : Control, IEntity {
     /// </summary>
     public Scene Scene { get; private set; }
 
-    /// <summary>
-    /// 实体的名称
-    /// </summary>
-    public string Name { get; set; }
-
-    /// <summary>
-    /// 实体的唯一标识
-    /// </summary>
-    public uint Id { get; set; }
-
     List<string> Tags = new List<string>();
-
-    private static uint newId = 0;
 
     private bool _enabled;
     public bool  Enabled
     {
         get => _enabled;
         set => SetEnabled(value);
-    }
-    
-
-    public override void _EnterTree()
-    {
-        //TODO: Id应该从配置文件中读取
-        Id = newId;
-        newId++;
     }
 
     public override void _Ready()

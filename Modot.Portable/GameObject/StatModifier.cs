@@ -35,7 +35,9 @@ public StatModifier(float value, StatModifierType type, object source) : this(va
 }
 
 public enum StatModifierType{
-    Flat = 100,
-    PercentAdd = 200,
-    PercentMult = 300,
+    FlatAdd = 100,
+    FlatReduce = 200,
+    PercentAdd = 300,
+    PercentReduce = 400,
+    PercentMult = 500
 }
