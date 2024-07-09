@@ -33,10 +33,16 @@ public abstract class SceneTransition
 
     public virtual void OnBeginTransition()
     {
-        foreach (var globalManager in Scene.GlobalManagers)
+        for (int i = 0; i < Scene.GlobalManagers.Count; i++)
         {
+            var globalManager = Scene.GlobalManagers[i];
             if(globalManager.EraseWhenTransition)
+            {
+                if(globalManager is GameProcessHandler)
+                    GameProcessHandler.ClearProcessQueue();
                 Scene.UnregisterGlobalManager(globalManager);
+                i--;
+            }
         }
         OnSceneObscured?.Invoke();
         var packScene = sceneLoadAction?.Invoke();
