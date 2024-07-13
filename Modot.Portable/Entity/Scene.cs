@@ -11,7 +11,8 @@ public partial class Scene : Node2D
 {
     public static Scene Instance { get; private set; }
     public static List<GlobalManager> GlobalManagers { get; private set; } = new List<GlobalManager>();
-    private static SceneTransition _sceneTransition;
+    public static SceneTransition SceneTransition;
+    public Control Stage;
 
     public virtual void Initialized(){}
 
@@ -26,8 +27,8 @@ public partial class Scene : Node2D
     public T StartSceneTransition<T>(T sceneTransition) where T : SceneTransition
     {
         //当上一个场景转换未结束时，不得开启下一个场景转换
-        Insist.IsNull(_sceneTransition, "SceneTransition should be null before start scene transition.");
-        _sceneTransition = sceneTransition;
+        Insist.IsNull(SceneTransition, "SceneTransition should be null before start scene transition.");
+        SceneTransition = sceneTransition;
         return sceneTransition;
     }
 
@@ -88,19 +89,24 @@ public partial class Scene : Node2D
     /// </summary>
     public override void _EnterTree()
     {
-        if (_sceneTransition != null)
+        if (SceneTransition != null)
         {
-            _sceneTransition.OnTransitionCompleted?.Invoke();
-            _sceneTransition = null;
+            SceneTransition.OnTransitionCompleted?.Invoke();
+            SceneTransition = null;
         }
         Instance = this;
     }
-    
+
     /// <summary>
     /// 场景初始化操作
     /// </summary>
     public override void _Ready(){
         Initialized();
+        if(TryFindNode("Ui", out Stage)){
+            Debug.Log("Ui Stage Attach Successed");
+        }else{
+            Debug.Log("Ui Stage Attach Failed");
+        }
     }
     
     public override void _Process(double delta)
@@ -110,8 +116,12 @@ public partial class Scene : Node2D
             if(globalManager.Enabled)
                 globalManager.Update((float)delta);
         }
-        _sceneTransition?.OnBeginTransition();
-        
+        if(SceneTransition != null){
+            if(SceneTransition.IsFirstTick)
+                SceneTransition.OnBeginTransition();
+            else
+                SceneTransition.OnUpdateTransition((float)delta);
+        }
     }
 
     /// <summary>

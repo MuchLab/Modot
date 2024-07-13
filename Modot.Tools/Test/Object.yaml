@@ -1,0 +1,114 @@
+- Id:
+    valueKind: Number
+  Name:
+    valueKind: String
+  Type:
+    valueKind: String
+  Health:
+    valueKind: Number
+  DamageMax:
+    valueKind: Number
+  DamageMin:
+    valueKind: Number
+  CritRate:
+    valueKind: Number
+  CritTime:
+    valueKind: Number
+  FireRangeRadius:
+    valueKind: Number
+  FireSpeed:
+    valueKind: Number
+  FireDuration:
+    valueKind: Number
+  GunPorts:
+    valueKind: String
+  OccupyArea:
+    valueKind: String
+  Cost:
+    valueKind: Number
+  Population:
+    valueKind: Number
+  TextureDirName:
+    valueKind: String
+  BulletId:
+    valueKind: Number
+  EffectId:
+    valueKind: Number
+  Description:
+    valueKind: String
+- Id:
+    valueKind: Number
+  Name:
+    valueKind: String
+  Type:
+    valueKind: String
+  Health:
+    valueKind: Number
+  DamageMax:
+    valueKind: Number
+  DamageMin:
+    valueKind: Number
+  CritRate:
+    valueKind: Number
+  CritTime:
+    valueKind: Number
+  FireRangeRadius:
+    valueKind: Number
+  FireSpeed:
+    valueKind: Number
+  FireDuration:
+    valueKind: Number
+  GunPorts:
+    valueKind: String
+  OccupyArea:
+    valueKind: String
+  Cost:
+    valueKind: Number
+  Population:
+    valueKind: Number
+  TextureDirName:
+    valueKind: String
+  BulletId:
+    valueKind: Number
+  EffectId:
+    valueKind: Number
+  Description:
+    valueKind: String
+- Id:
+    valueKind: Number
+  Name:
+    valueKind: String
+  Type:
+    valueKind: String
+  Health:
+    valueKind: Number
+  DamageMax:
+    valueKind: Number
+  DamageMin:
+    valueKind: Number
+  CritRate:
+    valueKind: Number
+  CritTime:
+    valueKind: Number
+  FireRangeRadius:
+    valueKind: Number
+  FireSpeed:
+    valueKind: Number
+  FireDuration:
+    valueKind: Number
+  GunPorts:
+    valueKind: String
+  OccupyArea:
+    valueKind: String
+  Cost:
+    valueKind: Number
+  Population:
+    valueKind: Number
+  TextureDirName:
+    valueKind: String
+  BulletId:
+    valueKind: Number
+  EffectId:
+    valueKind: Number
+  Description:
+    valueKind: String

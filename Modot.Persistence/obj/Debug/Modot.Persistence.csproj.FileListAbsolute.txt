@@ -1,0 +1,16 @@
+C:\Dev\GodotSeries\2DGame\PixelPlanet\Modot\Modot.Persistence\bin\Debug\Modot.Persistence.deps.json
+C:\Dev\GodotSeries\2DGame\PixelPlanet\Modot\Modot.Persistence\bin\Debug\Modot.Persistence.runtimeconfig.json
+C:\Dev\GodotSeries\2DGame\PixelPlanet\Modot\Modot.Persistence\bin\Debug\Modot.Persistence.dll
+C:\Dev\GodotSeries\2DGame\PixelPlanet\Modot\Modot.Persistence\bin\Debug\Modot.Persistence.pdb
+C:\Dev\GodotSeries\2DGame\PixelPlanet\Modot\Modot.Persistence\bin\Debug\MiniExcel.dll
+C:\Dev\GodotSeries\2DGame\PixelPlanet\Modot\Modot.Persistence\bin\Debug\YamlDotNet.dll
+C:\Dev\GodotSeries\2DGame\PixelPlanet\Modot\Modot.Persistence\obj\Debug\Modot.Persistence.csproj.AssemblyReference.cache
+C:\Dev\GodotSeries\2DGame\PixelPlanet\Modot\Modot.Persistence\obj\Debug\Modot.Persistence.GeneratedMSBuildEditorConfig.editorconfig
+C:\Dev\GodotSeries\2DGame\PixelPlanet\Modot\Modot.Persistence\obj\Debug\Modot.Persistence.csproj.CoreCompileInputs.cache
+C:\Dev\GodotSeries\2DGame\PixelPlanet\Modot\Modot.Persistence\obj\Debug\Modot.Persistence.sourcelink.json
+C:\Dev\GodotSeries\2DGame\PixelPlanet\Modot\Modot.Persistence\obj\Debug\Modot.Pe.7B4B93CA.Up2Date
+C:\Dev\GodotSeries\2DGame\PixelPlanet\Modot\Modot.Persistence\obj\Debug\Modot.Persistence.dll
+C:\Dev\GodotSeries\2DGame\PixelPlanet\Modot\Modot.Persistence\obj\Debug\refint\Modot.Persistence.dll
+C:\Dev\GodotSeries\2DGame\PixelPlanet\Modot\Modot.Persistence\obj\Debug\Modot.Persistence.pdb
+C:\Dev\GodotSeries\2DGame\PixelPlanet\Modot\Modot.Persistence\obj\Debug\Modot.Persistence.genruntimeconfig.cache
+C:\Dev\GodotSeries\2DGame\PixelPlanet\Modot\Modot.Persistence\obj\Debug\ref\Modot.Persistence.dll

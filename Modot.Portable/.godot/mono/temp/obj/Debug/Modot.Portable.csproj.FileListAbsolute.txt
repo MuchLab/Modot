@@ -69,3 +69,5 @@ C:\Dev\GodotSeries\2DGame\PixelPlanet\Modot\Modot.Portable\.godot\mono\temp\obj\
 C:\Dev\GodotSeries\2DGame\PixelPlanet\Modot\Modot.Portable\.godot\mono\temp\obj\Debug\Modot.Portable.pdb
 C:\Dev\GodotSeries\2DGame\PixelPlanet\Modot\Modot.Portable\.godot\mono\temp\obj\Debug\Modot.Portable.genruntimeconfig.cache
 C:\Dev\GodotSeries\2DGame\PixelPlanet\Modot\Modot.Portable\.godot\mono\temp\obj\Debug\ref\Modot.Portable.dll
+C:\Dev\GodotSeries\2DGame\PixelPlanet\Modot\Modot.Portable\.godot\mono\temp\bin\Debug\Modot.Persistence.dll
+C:\Dev\GodotSeries\2DGame\PixelPlanet\Modot\Modot.Portable\.godot\mono\temp\bin\Debug\Modot.Persistence.pdb

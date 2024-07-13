@@ -1,0 +1,82 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Modot.Portable/1.0.0": {
+        "dependencies": {
+          "Godot.SourceGenerators": "4.2.2",
+          "GodotSharp": "4.2.2",
+          "MiniExcel": "1.32.1",
+          "YamlDotNet": "15.3.0"
+        },
+        "runtime": {
+          "Modot.Portable.dll": {}
+        }
+      },
+      "Godot.SourceGenerators/4.2.2": {},
+      "GodotSharp/4.2.2": {
+        "runtime": {
+          "lib/net6.0/GodotSharp.dll": {
+            "assemblyVersion": "4.2.2.0",
+            "fileVersion": "4.2.2.0"
+          }
+        }
+      },
+      "MiniExcel/1.32.1": {
+        "runtime": {
+          "lib/net6.0/MiniExcel.dll": {
+            "assemblyVersion": "1.32.1.0",
+            "fileVersion": "1.32.1.0"
+          }
+        }
+      },
+      "YamlDotNet/15.3.0": {
+        "runtime": {
+          "lib/net8.0/YamlDotNet.dll": {
+            "assemblyVersion": "15.0.0.0",
+            "fileVersion": "15.3.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Modot.Portable/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Godot.SourceGenerators/4.2.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QGO7NjcG4W1doQTOXBp2TgAK+a6npFX2dYCw1CXttRh3/UI76sQnCUUe9/U95e6uMO9SzVK7wzEH3H4qGpOr4g==",
+      "path": "godot.sourcegenerators/4.2.2",
+      "hashPath": "godot.sourcegenerators.4.2.2.nupkg.sha512"
+    },
+    "GodotSharp/4.2.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-J2ZXDTuS4LlbPIOK2HCBD9lKNFvBzJLv6LIyFC3fAUKgUXZHvoKP/uwS+Iv/CrMZqsa+lQ+Wb4zfp5xoBrSCcw==",
+      "path": "godotsharp/4.2.2",
+      "hashPath": "godotsharp.4.2.2.nupkg.sha512"
+    },
+    "MiniExcel/1.32.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-givinRByTg0nQAktcFSaLmIt9Ki+LwYjlwtSYXuwQdoyAy8Z3RfBnKR/UA/79mWmb8wKJgPlnZf87pvOBpdZ/g==",
+      "path": "miniexcel/1.32.1",
+      "hashPath": "miniexcel.1.32.1.nupkg.sha512"
+    },
+    "YamlDotNet/15.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-F93japYa9YrJ59AZGhgdaUGHN7ITJ55FBBg/D/8C0BDgahv/rQD6MOSwHxOJJpon1kYyslVbeBrQ2wcJhox01w==",
+      "path": "yamldotnet/15.3.0",
+      "hashPath": "yamldotnet.15.3.0.nupkg.sha512"
+    }
+  }
+}

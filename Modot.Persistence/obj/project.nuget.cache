@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "03yWAGL7KEA=",
+  "success": true,
+  "projectFilePath": "C:\\Dev\\GodotSeries\\2DGame\\PixelPlanet\\Modot\\Modot.Persistence\\Modot.Persistence.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\14276\\.nuget\\packages\\miniexcel\\1.33.0\\miniexcel.1.33.0.nupkg.sha512",
+    "C:\\Users\\14276\\.nuget\\packages\\yamldotnet\\15.3.0\\yamldotnet.15.3.0.nupkg.sha512"
+  ],
+  "logs": []
+}

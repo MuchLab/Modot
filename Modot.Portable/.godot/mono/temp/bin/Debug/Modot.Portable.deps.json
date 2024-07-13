@@ -11,8 +11,7 @@
           "Godot.SourceGenerators": "4.2.2",
           "GodotSharp": "4.2.2",
           "GodotSharpEditor": "4.2.2",
-          "MiniExcel": "1.32.1",
-          "YamlDotNet": "15.3.0"
+          "Modot.Persistence": "1.0.0"
         },
         "runtime": {
           "Modot.Portable.dll": {}
@@ -38,11 +37,11 @@
           }
         }
       },
-      "MiniExcel/1.32.1": {
+      "MiniExcel/1.33.0": {
         "runtime": {
           "lib/net6.0/MiniExcel.dll": {
-            "assemblyVersion": "1.32.1.0",
-            "fileVersion": "1.32.1.0"
+            "assemblyVersion": "1.33.0.0",
+            "fileVersion": "1.33.0.0"
           }
         }
       },
@@ -52,6 +51,15 @@
             "assemblyVersion": "15.0.0.0",
             "fileVersion": "15.3.0.0"
           }
+        }
+      },
+      "Modot.Persistence/1.0.0": {
+        "dependencies": {
+          "MiniExcel": "1.33.0",
+          "YamlDotNet": "15.3.0"
+        },
+        "runtime": {
+          "Modot.Persistence.dll": {}
         }
       }
     }
@@ -83,12 +91,12 @@
       "path": "godotsharpeditor/4.2.2",
       "hashPath": "godotsharpeditor.4.2.2.nupkg.sha512"
     },
-    "MiniExcel/1.32.1": {
+    "MiniExcel/1.33.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-givinRByTg0nQAktcFSaLmIt9Ki+LwYjlwtSYXuwQdoyAy8Z3RfBnKR/UA/79mWmb8wKJgPlnZf87pvOBpdZ/g==",
-      "path": "miniexcel/1.32.1",
-      "hashPath": "miniexcel.1.32.1.nupkg.sha512"
+      "sha512": "sha512-mDOofcSIXRjC9XR0ZlqzE8EUpkYkCVArhlUw5Trrn1XJsjdfJT9JTnSILnj6ke1wVKbEcuhOYW8WFItFDRZYoQ==",
+      "path": "miniexcel/1.33.0",
+      "hashPath": "miniexcel.1.33.0.nupkg.sha512"
     },
     "YamlDotNet/15.3.0": {
       "type": "package",
@@ -96,6 +104,11 @@
       "sha512": "sha512-F93japYa9YrJ59AZGhgdaUGHN7ITJ55FBBg/D/8C0BDgahv/rQD6MOSwHxOJJpon1kYyslVbeBrQ2wcJhox01w==",
       "path": "yamldotnet/15.3.0",
       "hashPath": "yamldotnet.15.3.0.nupkg.sha512"
+    },
+    "Modot.Persistence/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

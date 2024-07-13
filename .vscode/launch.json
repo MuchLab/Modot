@@ -1,0 +1,26 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Modot.Tools",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/Modot.Tools/bin/Debug/net8.0/Modot.Tools.dll",
+            "args": ["convert", "--input-path", "Test/Object.json", "--output-path", "Test/Object.yaml"],
+            "cwd": "${workspaceFolder}/Modot.Tools",
+            "stopAtEntry": false,
+            "console": "internalConsole",
+            // "pipeTransport": {
+            //     "pipeCwd": "${workspaceFolder}",
+            //     "pipeProgram": "enter the fully qualified path for the pipe program name, for example '/usr/bin/ssh'",
+            //     "pipeArgs": [],
+            //     "debuggerPath": "enter the path for the debugger on the target machine, for example ~/vsdbg/vsdbg"
+            // }
+        }
+
+    ]
+}
