@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 
+namespace Modot.Persistence;
+
 public class Yaml {
     private static string ResourcePathPrefix = "res://";
 

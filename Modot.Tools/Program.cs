@@ -8,66 +8,9 @@ using Modot.Persistence;
 namespace Modot.Tools;
 internal class Program
 {
+    private static string CurrentDir = Environment.CurrentDirectory;
     static async Task<int> Main(string[] args)
     {
-        //modot convert --excel  xxx --json xxx
-        //
-        var fileOption = new Option<FileInfo?>(
-            name: "--file",
-            description: "An option whose argument is parsed as a FileInfo",
-            isDefault: true,
-            parseArgument: result =>
-            {
-                if (result.Tokens.Count == 0)
-                {
-                    return new FileInfo("sampleQuotes.txt");
-
-                }
-                string? filePath = result.Tokens.Single().Value;
-                if (!File.Exists(filePath))
-                {
-                    result.ErrorMessage = "File does not exist";
-                    return null;
-                }
-                else
-                {
-                    return new FileInfo(filePath);
-                }
-            });
-
-        var delayOption = new Option<int>(
-            name: "--delay",
-            description: "Delay between lines, specified as milliseconds per character in a line.",
-            getDefaultValue: () => 42);
-
-        var fgcolorOption = new Option<ConsoleColor>(
-            name: "--fgcolor",
-            description: "Foreground color of text displayed on the console.",
-            getDefaultValue: () => ConsoleColor.White);
-
-        var lightModeOption = new Option<bool>(
-            name: "--light-mode",
-            description: "Background color of text displayed on the console: default is black, light mode is white.");
-
-        var searchTermsOption = new Option<string[]>(
-            name: "--search-terms",
-            description: "Strings to search for when deleting entries.")
-            { IsRequired = true, AllowMultipleArgumentsPerToken = true };
-
-        var quoteArgument = new Argument<string>(
-            name: "quote",
-            description: "Text of quote.");
-
-        var bylineArgument = new Argument<string>(
-            name: "byline",
-            description: "Byline of quote.");
-
-        var rootCommand = new RootCommand("Modot tool for System.CommandLine");
-        rootCommand.AddGlobalOption(fileOption);
-
-        var quotesCommand = new Command("quotes", "Work with a file that contains quotes.");
-        rootCommand.AddCommand(quotesCommand);
-
         var inputPathOption = new Option<string>(
             name: "--input-path", 
             description: "input file path which need convert.");
@@ -88,19 +31,56 @@ internal class Program
                 return result.Tokens.Single().Value;
             });
 
+        var outputDirectoryOption = new Option<string>(
+            name: "--output-dir", 
+            description: "output file path which need convert.",
+            isDefault: true,
+            parseArgument: result =>{
+                if (result.Tokens.Count == 0)
+                {
+                    return string.Empty;
+                }
+                string? directory = result.Tokens.Single().Value;
+                if(!Directory.Exists(directory))
+                    Directory.CreateDirectory(directory);
+                return directory;
+            });
+
+        var outputTypeOption = new Option<string>(
+            name: "--output-type", 
+            description: "output file type.",
+            isDefault: true,
+            parseArgument: result =>{
+                if (result.Tokens.Count == 0)
+                {
+                    return string.Empty;
+                }
+                return result.Tokens.Single().Value;
+            }); 
+
         var convertCommand = new Command("convert", "convert different data format file."){
             inputPathOption,
             outputPathOption,
             sheetNameOption
         };
+        var convertAllCommand = new Command("convert-all", "convert all excel data file."){
+            inputPathOption,
+            outputDirectoryOption,
+            outputTypeOption
+        };
+        var rootCommand = new RootCommand("Modot tool for System.CommandLine");
         rootCommand.AddCommand(convertCommand);
+        rootCommand.AddCommand(convertAllCommand);
 
         convertCommand.SetHandler(ConvertFile, inputPathOption, outputPathOption, sheetNameOption);
-
+        convertAllCommand.SetHandler(ConvertAllFile, inputPathOption, outputDirectoryOption, outputTypeOption);
+        
         return await rootCommand.InvokeAsync(args);
     }
 
     internal static void ConvertFile(string inputPath, string outputPath, string sheetName){
+        outputPath = $"{CurrentDir}\\{outputPath}";
+        inputPath = $"{CurrentDir}\\{inputPath}";
         List<Dictionary<string, object>> data;
         if (inputPath.EndsWith(".xlsx"))
         {
@@ -136,6 +116,38 @@ internal class Program
             Yaml.ToYamlFileAsync(data, outputPath);
         }
         else{
+            throw new Exception("dont provide this output file format");
+        }
+    }
+
+    internal static void ConvertAllFile(string inputPath, string outputDir, string outputType){
+        outputDir = $"{CurrentDir}\\{outputDir}";
+        inputPath = $"{CurrentDir}\\{inputPath}";
+
+        ExcelType type = ExcelType.UNKNOWN;
+        if(inputPath.EndsWith(".xlsx"))
+            type = ExcelType.XLSX;
+        else if(inputPath.EndsWith(".csv"))
+            type = ExcelType.CSV;
+        
+        var sheetNames = MiniExcel.GetSheetNames(inputPath);
+
+        if(outputType == "json"){
+            foreach (var sheetName in sheetNames)
+            {
+                List<Dictionary<string, object>> data = Excel.FromExcelFile(inputPath, sheetName, type);
+                var outputFile = $"{outputDir}\\{sheetName}.json";
+                Json.ToJsonFileAsync(data, outputFile);
+            }
+        }
+        else if(outputType == "yaml"){
+            foreach (var sheetName in sheetNames)
+            {
+                List<Dictionary<string, object>> data = Excel.FromExcelFile(inputPath, sheetName, type);
+                var outputFile = $"{outputDir}\\{sheetName}.yaml";
+                Yaml.ToYamlFileAsync(data, outputFile);
+            }
+        }else{
             throw new Exception("dont provide this output file format");
         }
     }
