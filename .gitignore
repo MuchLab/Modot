@@ -1,0 +1,6 @@
+# Modot specific ignores
+Modot.Persistence/bin/
+Modot.Persistence/obj/
+Modot.Tools/bin/
+Modot.Tools/obj/
+Modot.Portable/.godot/
