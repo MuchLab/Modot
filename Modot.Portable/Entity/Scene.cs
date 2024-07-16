@@ -1,19 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
 using Godot;
 
 namespace Modot.Portable;
 
 public partial class Scene : Node2D
 {
+    public string DrawText { get; set; }
     public static Scene Instance { get; private set; }
     public static List<GlobalManager> GlobalManagers { get; private set; } = new List<GlobalManager>();
     public static SceneTransition SceneTransition;
-    public Control Stage;
-
+    public Camera2D MainCamera => _mainCamera;
+    private Camera2D _mainCamera;
+    public Control UiStage => _uiStage;
+    private Control _uiStage;
+    public DebugText DebugText => _debugText;
+    private DebugText _debugText;
+    public GameInput GameInput => _gameInput;
+    private GameInput _gameInput;
     public virtual void Initialized(){}
 
     #region SceneTransition
@@ -24,12 +29,11 @@ public partial class Scene : Node2D
     /// <param name="sceneTransition"></param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    public T StartSceneTransition<T>(T sceneTransition) where T : SceneTransition
+    public void StartSceneTransition<T>(T sceneTransition) where T : SceneTransition
     {
         //当上一个场景转换未结束时，不得开启下一个场景转换
-        Insist.IsNull(SceneTransition, "SceneTransition should be null before start scene transition.");
-        SceneTransition = sceneTransition;
-        return sceneTransition;
+        if(SceneTransition == null)
+            SceneTransition = sceneTransition;
     }
 
     #endregion
@@ -95,6 +99,27 @@ public partial class Scene : Node2D
             SceneTransition = null;
         }
         Instance = this;
+        if(TryFindNode("GameInput", out _gameInput)){
+            Debug.Log("GameInput attach successed");
+        }else{
+            _gameInput = new GameInput();
+            AddChild(_gameInput);
+            Debug.Log("Create GameInput");
+        }
+        if(TryFindNode("Camera2D", out _mainCamera)){
+            Debug.Log("MainCamera attach successed");
+        } else {
+            _mainCamera = new Camera2D();
+            AddChild(_mainCamera);
+            Debug.Log("Create MainCamera");
+        }
+        if(TryFindNode("Ui", out _uiStage)){
+            Debug.Log("UiStage attach successed");
+            _debugText = new DebugText();
+            _uiStage.AddChild(_debugText);
+        }else{
+            _uiStage = null;
+        }
     }
 
     /// <summary>
@@ -102,11 +127,6 @@ public partial class Scene : Node2D
     /// </summary>
     public override void _Ready(){
         Initialized();
-        if(TryFindNode("Ui", out Stage)){
-            Debug.Log("Ui Stage Attach Successed");
-        }else{
-            Debug.Log("Ui Stage Attach Failed");
-        }
     }
     
     public override void _Process(double delta)
@@ -176,7 +196,6 @@ public partial class Scene : Node2D
         if (node != null)
             return true;
         return false;
-
     }
 
     /// <summary>

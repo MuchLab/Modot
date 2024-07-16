@@ -6,9 +6,9 @@ using Modot.Portable;
 
 public class ProgressSceneTransition : SceneTransition
 {
-    public event Action OnDataLoad;
-    public event Action OnSceneLoad;
-    private string _loadDetail;
+    // public event Action OnDataLoad;
+    // public event Action OnSceneLoad;
+    // private string _loadDetail;
     private string _packedScenePath;
     private float _endingDelay;
     private float _timer;
@@ -27,7 +27,7 @@ public class ProgressSceneTransition : SceneTransition
     {
         
         //先转换到进度条场景。
-        Scene.Instance.Stage.AddChild(_progressPrefab.Instantiate());
+        Scene.Instance.UiStage.AddChild(_progressPrefab.Instantiate());
         //暂停所有场景的运行，需要把progressPrefab设置为Alway
         // Scene.Instance.ProcessMode = Node.ProcessModeEnum.Disabled;
 
