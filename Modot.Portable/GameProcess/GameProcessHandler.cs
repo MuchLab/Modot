@@ -5,7 +5,7 @@ public class GameProcessHandler : GlobalManager {
     private static bool IsPlayingProcess;
     public static IGameProcess CurrentProcess;
 
-    public GameProcessHandler(){
+    public GameProcessHandler() : base(erase: false) {
         IsPlayingProcess = false;
         CurrentProcess = null;
     }

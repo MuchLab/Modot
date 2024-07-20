@@ -63,7 +63,7 @@ public partial class DebugText : EntityUi {
         {
             var position = new Vector2( 0,  _beginPositionY - _marginButtom - index * (_fontSize + _space));
 
-            DrawString(ThemeDB.FallbackFont, position, line.Text, HorizontalAlignment.Left, 200, _fontSize, line.Color);
+            DrawString(ThemeDB.FallbackFont, position, line.Text, HorizontalAlignment.Left, 480, _fontSize, line.Color);
             index++;
         }
     }

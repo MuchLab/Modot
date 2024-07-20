@@ -8,7 +8,7 @@ public partial class EntityUi : Control, IEntity {
     /// <summary>
     /// 拥有该实体的场景
     /// </summary>
-    public Scene Scene { get; private set; }
+    // public Scene Scene { get; private set; }
 
     List<string> Tags = new List<string>();
 
