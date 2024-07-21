@@ -4,26 +4,31 @@ using Godot;
 using Modot.Portable;
 
 public partial class GameInput : Entity{
-    public static string MOUSE_LEFT_CLICK = "MouseLeftClick";
-    public static string MOUSE_RIGHT_CLICK = "MouseRightClick";
+    public static string LEFT_MOUSE_BUTTON = "LeftMouseButton";
+    public static string RIGHT_MOUSE_BUTTON = "RightMouseButton";
     public static string MOUSE_WHEEL_UP = "MouseWheelUp";
     public static string MOUSE_WHEEL_DOWN = "MouseWheelDown";
     public static string TEST = "Test";
-    public static string MENU_PANEL_SHOW = "MenuPanelShow";
+    public static string ESCAPE_KEY = "EscapeKey";
     public static GameInput Instance { get; private set; }
     public bool IsScreenClicked => _isScreenClicked;
     private bool _isScreenClicked;
     public bool IsScreenTouched => _isScreenTouched;
     private bool _isScreenTouched;
-    public bool IsLeftMouseClicked => Input.IsActionJustPressed(MOUSE_LEFT_CLICK);
-    public bool IsLeftMousePressed => Input.IsActionPressed(MOUSE_LEFT_CLICK);
-    public bool IsRightMouseClicked => Input.IsActionJustPressed(MOUSE_RIGHT_CLICK);
-    public bool IsRightMousePressed => Input.IsActionPressed(MOUSE_RIGHT_CLICK);
+    public bool IsLeftMouseJustPressed => Input.IsActionJustPressed(LEFT_MOUSE_BUTTON);
+    public bool IsLeftMousePressed => Input.IsActionPressed(LEFT_MOUSE_BUTTON);
+    public bool IsRightMouseJustPressed => Input.IsActionJustPressed(RIGHT_MOUSE_BUTTON);
+    public bool IsRightMousePressed => Input.IsActionPressed(RIGHT_MOUSE_BUTTON);
     public bool IsMouseWheelUp => Input.IsActionJustPressed(MOUSE_WHEEL_UP);
     public bool IsMouseWheelDown => Input.IsActionJustPressed(MOUSE_WHEEL_DOWN);
-    public bool IsMenuPanelShowed => Input.IsActionJustPressed(MENU_PANEL_SHOW);
-    public bool IsTestPressed => Input.IsActionJustPressed(TEST);
+    public bool IsEscapeKeyJustPressed => Input.IsActionJustPressed(ESCAPE_KEY);
+    public bool IsTestJustPressed => Input.IsActionJustPressed(TEST);
     private static bool _isFirstTickTouched;
+    public override void _Process(double delta)
+    {
+        if(!_isFirstTickTouched)
+            _isScreenClicked = false;
+    }
     public override void _Input(InputEvent e)
     {
         if(e is InputEventScreenTouch touchEvent){
@@ -32,13 +37,9 @@ public partial class GameInput : Entity{
                 if(_isFirstTickTouched){
                     _isScreenClicked = true;
                     _isFirstTickTouched = false;
-                }else{
-                    _isScreenClicked = false;
                 }
-            }
-            else{
+            }else{
                 _isScreenTouched = false;
-                _isScreenClicked = false;
                 _isFirstTickTouched = true;
             }
         }

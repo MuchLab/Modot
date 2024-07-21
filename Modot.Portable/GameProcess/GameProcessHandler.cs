@@ -46,5 +46,7 @@ public class GameProcessHandler : GlobalManager {
 
     public static void ClearProcessQueue(){
         ProcessQueue.Clear();
+        CurrentProcess = null;
+        IsPlayingProcess = false;
     }
 }

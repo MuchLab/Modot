@@ -9,7 +9,7 @@ public partial class DebugText : EntityUi {
         public string Text { get; set; }
         public Color Color { get; set; }
     }
-    private int _lineNumberMax = 5;
+    private int _lineNumberMax = 8;
     private int _marginButtom = 5;
     private int _fontSize = 8;
     private Queue<DebugLine> _lines = new Queue<DebugLine>();
@@ -29,6 +29,17 @@ public partial class DebugText : EntityUi {
         _timer.OneShot = true;
         _timer.Timeout += Timer_Timeout;
     }
+    public override void _Draw()
+    {
+        int index = 0;
+        foreach (var line in _lines)
+        {
+            var position = new Vector2( 0,  _beginPositionY - _marginButtom - index * (_fontSize + _space));
+
+            DrawString(ThemeDB.FallbackFont, position, line.Text, HorizontalAlignment.Left, 480, _fontSize, line.Color);
+            index++;
+        }
+    }
     private void Timer_Timeout(){
         var tween = CreateTween();
         tween.TweenProperty(this, "modulate:a", 0, 0.5).SetEase(Tween.EaseType.OutIn);
@@ -47,6 +58,11 @@ public partial class DebugText : EntityUi {
         QueueRedraw();
     }
 
+    public void DrawLog(string text, LogType type){
+        var color = GetColorByType(type);
+        DrawLog(text, color);
+    }
+
     public void DrawLog(string text){
         if(_lines.Count > _lineNumberMax - 1){
             _lines.Dequeue();
@@ -56,15 +72,37 @@ public partial class DebugText : EntityUi {
         Show();
         QueueRedraw();
     }
-    public override void _Draw()
-    {
-        int index = 0;
-        foreach (var line in _lines)
-        {
-            var position = new Vector2( 0,  _beginPositionY - _marginButtom - index * (_fontSize + _space));
+   
+   public void DrawInfo(string text) => DrawLog(text, LogType.Info);
+   public void DrawError(string text) => DrawLog(text, LogType.Error);
+   public void DrawWarn(string text) => DrawLog(text, LogType.Warn);
+   public void DrawTrace(string text) => DrawLog(text, LogType.Trace);
 
-            DrawString(ThemeDB.FallbackFont, position, line.Text, HorizontalAlignment.Left, 480, _fontSize, line.Color);
-            index++;
+    private Color GetColorByType(LogType type){
+        Color color = Colors.White;
+        switch(type){
+            case LogType.Info:
+                color = Colors.Green;
+                break;
+            case LogType.Error:
+                color = Colors.Red;
+                break;
+            case LogType.Warn:
+                color = Colors.Yellow;
+                break;
+            case LogType.Trace:
+                color = Colors.Blue;
+                break;
         }
+        return color;
     }
+}
+
+public enum LogType
+{
+    Error,
+    Warn,
+    Log,
+    Info,
+    Trace
 }

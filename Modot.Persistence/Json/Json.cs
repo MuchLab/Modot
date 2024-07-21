@@ -116,7 +116,6 @@ public static class Json
         //数字会转换成字符串，字符串会转换成数字
         NumberHandling =  JsonNumberHandling.AllowReadingFromString | JsonNumberHandling.WriteAsString,
         //字符串和枚举可以互转
-        Converters = {new JsonStringEnumConverter()},
-        ReferenceHandler = ReferenceHandler.Preserve
+        Converters = {new JsonStringEnumConverter()}
 	};
 }
