@@ -19,6 +19,7 @@ public partial class Scene : Node2D
     private DebugText _debugText;
     public GameInput GameInput => _gameInput;
     private GameInput _gameInput;
+    public static RootController RootController = new RootController();
     public virtual void Initialized(){}
 
     #region SceneTransition

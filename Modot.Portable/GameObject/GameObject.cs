@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Modot.Portable;
-
+namespace Modot.Portable;
 public abstract partial class GameObject : Entity2D {
     private static uint newId = 1;
     public override void _EnterTree()
