@@ -1,15 +1,15 @@
 using System.Collections.Generic;
 using Modot.Portable;
 
-public abstract class Database : IDatabase<Data>
+public abstract class Database<T> : IDatabase<T> where T : Data
 {
-    protected List<Data> _database;
+    protected List<T> _database;
 
     public abstract void Connect(string path);
 
-    public virtual List<Data> Get(RequestCondition request)
+    public virtual List<T> Get(RequestCondition request)
     {
-        List<Data> list = new List<Data>();
+        List<T> list = new List<T>();
         foreach (var item in _database)
         {
             bool match = true;

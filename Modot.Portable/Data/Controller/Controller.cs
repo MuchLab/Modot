@@ -4,11 +4,7 @@ using System.Reflection;
 namespace Modot.Portable;
 public abstract class Controller{
     protected Controller _nextController;
-    protected Database _database;
     public Controller(){}
-    public Controller(Database database){
-        _database = database;
-    }
     public void SetNextController(Controller controller){
         _nextController = controller;
     }
@@ -21,7 +17,7 @@ public abstract class Controller{
         //如果path包含?则有查询参数需要
         if(requestPath.Contains("?")){
             var splited = requestPath.Split("?");
-            Type type = null;
+            Type type;
             Assembly[] assemblyArray = AppDomain.CurrentDomain.GetAssemblies();
             int assemblyArrayLength = assemblyArray.Length;
             for (int i = 0; i < assemblyArrayLength; ++i)

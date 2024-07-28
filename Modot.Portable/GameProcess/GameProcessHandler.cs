@@ -5,7 +5,7 @@ public class GameProcessHandler : GlobalManager {
     private static bool IsPlayingProcess;
     public static IGameProcess CurrentProcess;
 
-    public GameProcessHandler() : base(erase: false) {
+    public GameProcessHandler() : base() {
         IsPlayingProcess = false;
         CurrentProcess = null;
     }
@@ -13,7 +13,7 @@ public class GameProcessHandler : GlobalManager {
     public override void Update(float delta)
     {
         if(IsPlayingProcess){
-            CurrentProcess.OnUpdate();
+            CurrentProcess.OnUpdate(delta);
         }
     }
 

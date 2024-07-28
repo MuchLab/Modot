@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace Modot.Portable;
-public class DataResponse{
+public class DataResponse {
     public List<Data> Data { get; private set; }
     public ResponseType ResponseType { get; private set; }
     public DataResponse(List<Data> data, ResponseType responseType){

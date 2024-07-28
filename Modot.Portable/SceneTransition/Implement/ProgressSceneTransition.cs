@@ -31,7 +31,6 @@ public class ProgressSceneTransition : SceneTransition
         //暂停所有场景的运行，需要把progressPrefab设置为Alway
         // Scene.Instance.ProcessMode = Node.ProcessModeEnum.Disabled;
 
-        //TODO:数据加载进度，设置加载时间的最小阈值：5s
         base.OnBeginTransition();
     }
     protected override void LoadAndChangeScene()

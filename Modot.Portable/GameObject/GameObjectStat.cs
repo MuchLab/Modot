@@ -7,6 +7,7 @@ namespace Modot.Portable;
 
 
 public class GameObjectStat {
+    public Action<float> OnValueChanged;
     private float _lastBaseValue = float.MinValue;
     public float BaseValue { get; set; }
     private bool _isDirty = true;
@@ -39,10 +40,12 @@ public class GameObjectStat {
         _isDirty = true;
         _statModifiers.Add(modifier);
         _statModifiers.Sort();
+        OnValueChanged?.Invoke(Value);
     }
     public virtual bool RemoveModifier(StatModifier modifier){
         if(_statModifiers.Remove(modifier)){
             _isDirty = true;
+            OnValueChanged?.Invoke(Value);
             return true;
         }
         return false;
