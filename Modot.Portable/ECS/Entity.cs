@@ -4,7 +4,7 @@ using Godot;
 
 namespace Modot.Portable;
 
-public partial class Entity2D : Node2D, IEntity {
+public partial class Entity : Node, IEntity {
 
     List<string> Tags = new List<string>();
 
@@ -51,47 +51,24 @@ public partial class Entity2D : Node2D, IEntity {
     }
     #endregion
 
-    #region Node2D Utils
-    protected bool IsInsideViewport(Vector2 position, float offset){
-        var size = GetViewport().GetVisibleRect().Size;
-        if(position.X + offset < 0)
-            return false;
-        if(position.X - offset > size.X)
-            return false;
-        if(position.Y + offset < 0)
-            return false;
-        if(position.Y - offset > size.Y)
-            return false;
-        return true;
-    }
-    #endregion
+    #region Visible
 
-    #region LifeTime Component
-    // public override void _Process(double delta)
-    // {
-    //     base._Process(delta);
-    //     foreach (var component in Components)
-    //     {
-    //         if(component.IsFirstTick){
-    //             component.OnBegin();
-    //             component.IsFirstTick = false;
-    //         }
-    //         else
-    //             component.OnUpdate(delta);
-    //     }
-    // }
+    protected void HideVisual() => CanvasItem.Hide();
 
-    // public override void _ExitTree()
-    // {
-    //     base._ExitTree();
-    //     foreach (var component in Components)
-    //         component.OnEnd();
-    // }
+    protected void ShowVisual() => CanvasItem.Show();
 
-    // protected void AddComponent(IComponent component){
-    //     component.IsFirstTick = true;
-    //     component.Entity = this;
-    //     Components.Add(component);
-    // }
+    private CanvasItem CanvasItem { 
+        get{
+            Node node = this;
+            if(node is CanvasItem canvasItem){
+                return canvasItem;
+            }else{
+                Insist.Fail("Entity isnt a CanvasItem");
+                return null;
+            }
+        }
+     }
+
+    protected bool Visible { get => CanvasItem.Visible; set => CanvasItem.Visible = value; }
     #endregion
 }
