@@ -1,7 +1,8 @@
 using System;
 using System.Linq;
+using Godot;
 namespace Modot.Portable;
-public abstract partial class GameObject : Entity {
+public abstract partial class GameObject : Node2D {
     private static uint newId = 1;
     public override void _EnterTree()
     {

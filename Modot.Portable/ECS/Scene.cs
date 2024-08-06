@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Arch.Core;
+using Arch.Core.Utils;
+using Arch.System;
 using Godot;
 
 namespace Modot.Portable;
@@ -20,7 +23,9 @@ public partial class Scene : Node2D
     public GameInput GameInput => _gameInput;
     private GameInput _gameInput;
     public static RootController RootController = new RootController();
-    public virtual void Initialized(){}
+
+
+    
 
     #region SceneTransition
 
@@ -121,14 +126,24 @@ public partial class Scene : Node2D
         }else{
             _uiStage = null;
         }
+
+        //Arch World
+        _world = World.Create();
+
     }
 
     /// <summary>
     /// 场景初始化操作
     /// </summary>
     public override void _Ready(){
+        _systems.Initialize();
         Initialized();
     }
+
+    /// <summary>
+    /// 初始化
+    /// </summary>
+    public virtual void Initialized(){}
     
     public override void _Process(double delta)
     {
@@ -143,6 +158,11 @@ public partial class Scene : Node2D
             else
                 SceneTransition.OnUpdateTransition((float)delta);
         }
+
+        _systems.BeforeUpdate((float) delta);
+        _systems.Update((float)delta);
+        _systems.AfterUpdate((float)delta);
+        base._Process(delta);
     }
 
     /// <summary>
@@ -150,6 +170,8 @@ public partial class Scene : Node2D
     /// </summary>
     public void ExitGame()
     {
+        World.Destroy(_world);
+        _systems.Dispose();
         GetTree().Quit();
     }
 
@@ -219,6 +241,22 @@ public partial class Scene : Node2D
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
     public List<T> GetNodes<T>(Node parent, string name) where T : Node => parent.FindChildren(name).OfType<T>().ToList();
+
+    #endregion
+
+    #region ArchECS
+
+    private World _world;
+    private Arch.System.Group<float> _systems = new("Systems");
+
+    public void AddSystem<G>() where G : class, ISystem<float>{
+        var system = Activator.CreateInstance(typeof(G), [_world]) as G;
+        Insist.IsNotNull($"System {typeof(G).Name} must have a constructor with a world args");
+        _systems.Add(system);
+    }
+    public void GetSystem<G>() where G : ISystem<float> => _systems.Get<G>();
+    public Entity CreateEntity(params ComponentType[] types) => _world.Create(types);
+    public Entity CreateEntity<E>() => _world.Create<E>();
 
     #endregion
 }

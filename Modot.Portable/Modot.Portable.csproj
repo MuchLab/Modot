@@ -15,4 +15,9 @@
     <ItemGroup>
       <ProjectReference Include="..\Modot.Persistence\Modot.Persistence.csproj" />
     </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="Arch" Version="1.2.8" />
+      <PackageReference Include="Arch.System" Version="1.0.5" />
+      <PackageReference Include="Arch.System.SourceGenerator" Version="1.2.1" />
+    </ItemGroup>
 </Project>

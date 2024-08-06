@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using Godot;
-using YamlDotNet.Core.Tokens;
 
 namespace Modot.Portable;
-public partial class DebugText : EntityUi {
+public partial class DebugText : Control {
     private struct DebugLine{
         public string Text { get; set; }
         public Color Color { get; set; }

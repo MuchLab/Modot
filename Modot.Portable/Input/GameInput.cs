@@ -1,9 +1,7 @@
 
-using System;
 using Godot;
-using Modot.Portable;
 
-public partial class GameInput : Entity{
+public partial class GameInput : Node{
     public static string LEFT_MOUSE_BUTTON = "LeftMouseButton";
     public static string RIGHT_MOUSE_BUTTON = "RightMouseButton";
     public static string MOUSE_WHEEL_UP = "MouseWheelUp";
@@ -23,27 +21,6 @@ public partial class GameInput : Entity{
     public bool IsMouseWheelDown => Input.IsActionJustPressed(MOUSE_WHEEL_DOWN);
     public bool IsEscapeKeyJustPressed => Input.IsActionJustPressed(ESCAPE_KEY);
     public bool IsTestJustPressed => Input.IsActionJustPressed(TEST);
-    private static bool _isFirstTickTouched;
-    public override void _Process(double delta)
-    {
-        if(!_isFirstTickTouched)
-            _isScreenClicked = false;
-    }
-    public override void _Input(InputEvent e)
-    {
-        if(e is InputEventScreenTouch touchEvent){
-            if(e.IsPressed()){
-                _isScreenTouched = true;
-                if(_isFirstTickTouched){
-                    _isScreenClicked = true;
-                    _isFirstTickTouched = false;
-                }
-            }else{
-                _isScreenTouched = false;
-                _isFirstTickTouched = true;
-            }
-        }
-    }
     public override void _EnterTree()
     {
         base._EnterTree();
