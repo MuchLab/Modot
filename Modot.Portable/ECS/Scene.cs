@@ -136,7 +136,6 @@ public partial class Scene : Node2D
     /// 场景初始化操作
     /// </summary>
     public override void _Ready(){
-        _systems.Initialize();
         Initialized();
     }
 
@@ -158,10 +157,12 @@ public partial class Scene : Node2D
             else
                 SceneTransition.OnUpdateTransition((float)delta);
         }
-
-        _systems.BeforeUpdate((float) delta);
-        _systems.Update((float)delta);
-        _systems.AfterUpdate((float)delta);
+        foreach (var group in _systemGroups)
+        {
+            group.BeforeUpdate((float) delta);
+            group.Update((float)delta);
+            group.AfterUpdate((float)delta);
+        }
         base._Process(delta);
     }
 
@@ -171,7 +172,10 @@ public partial class Scene : Node2D
     public void ExitGame()
     {
         World.Destroy(_world);
-        _systems.Dispose();
+        foreach (var group in _systemGroups)
+        {
+            group.Dispose();
+        }
         GetTree().Quit();
     }
 
@@ -247,16 +251,34 @@ public partial class Scene : Node2D
     #region ArchECS
 
     private World _world;
-    private Arch.System.Group<float> _systems = new("Systems");
-
-    public void AddSystem<G>() where G : class, ISystem<float>{
+    private List<Arch.System.Group<float>> _systemGroups = [new ("default")];
+    public void AddSystemGroup(string name) => _systemGroups.Add(new (name));
+    public bool AddSystemByGroupIndex<G>(int index) where G : class, ISystem<float>{
+        if(index > _systemGroups.Count - 1)
+            return false;
         var system = Activator.CreateInstance(typeof(G), [_world]) as G;
         Insist.IsNotNull($"System {typeof(G).Name} must have a constructor with a world args");
-        _systems.Add(system);
+        _systemGroups[index].Add(system);
+        system.Initialize();
+        return true;
     }
-    public void GetSystem<G>() where G : ISystem<float> => _systems.Get<G>();
+    public bool AddSystem<G>() where G : class, ISystem<float>{
+        var system = Activator.CreateInstance(typeof(G), [_world]) as G;
+        Insist.IsNotNull($"System {typeof(G).Name} must have a constructor with a world args");
+        _systemGroups[0].Add(system);
+        system.Initialize();
+        return true;
+    }
+    public bool GetSystemByGroupIndex<G>(int index, out G system) where G : class, ISystem<float>{
+        if(index > _systemGroups.Count - 1){
+            system = null;
+            return false;
+        }
+        system = _systemGroups[index].Get<G>();
+        return true;
+    }
+    public G GetSystem<G>() where G : ISystem<float> => _systemGroups[0].Get<G>();
     public Entity CreateEntity(params ComponentType[] types) => _world.Create(types);
     public Entity CreateEntity<E>() => _world.Create<E>();
-
     #endregion
 }

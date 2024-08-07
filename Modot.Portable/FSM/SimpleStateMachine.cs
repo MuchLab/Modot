@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using Godot;
 
 
 namespace Modot.Portable;
@@ -12,7 +13,7 @@ namespace Modot.Portable;
 /// Note: if you use an enum as the contraint you can avoid allocations/boxing in Mono by doing what the Core
 /// Emitter does for its enum: pass in a IEqualityComparer to the constructor.
 /// </summary>
-public abstract partial class SimpleStateMachine<TEnum> : Entity
+public abstract partial class SimpleStateMachine<TEnum> : Node
 	where TEnum : struct, IComparable, IFormattable
 {
 	class StateMethodCache
