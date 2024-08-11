@@ -20,8 +20,6 @@ public partial class Scene : Node2D
     private Control _uiStage;
     public DebugText DebugText => _debugText;
     private DebugText _debugText;
-    public GameInput GameInput => _gameInput;
-    private GameInput _gameInput;
     public static RootController RootController = new RootController();
 
 
@@ -105,13 +103,6 @@ public partial class Scene : Node2D
             SceneTransition = null;
         }
         Instance = this;
-        if(TryFindNode("GameInput", out _gameInput)){
-            Debug.Log("GameInput attach successed");
-        }else{
-            _gameInput = new GameInput();
-            AddChild(_gameInput);
-            Debug.Log("Create GameInput");
-        }
         if(TryFindNode("Camera2D", out _mainCamera)){
             Debug.Log("MainCamera attach successed");
         } else {
@@ -182,74 +173,15 @@ public partial class Scene : Node2D
     #endregion
 
     #region Node
-    
-    /// <summary>
-    /// 从根节点开始获取节点
-    /// </summary>
-    /// <param name="name"></param>
-    /// <param name="includeInternal">是否会查找除子节点外的其他节点</param>
-    /// <typeparam name="T"></typeparam>
-    /// <returns></returns>
-    public T FindNode<T>(string name) where T : Node
-    {
-        T node = null;
-        var child = FindChild(name);
-        if (child is T)
-            node = child as T;
-        Insist.IsNotNull(node, $"Can't find a node with type {typeof(T).Name}");
-        return node;
-    }
-    
-    /// <summary>
-    /// 从一个节点开始获取节点
-    /// </summary>
-    /// <param name="parent"></param>
-    /// <param name="name"></param>
-    /// <param name="includeInternal">是否会查找除子节点外的其他节点</param>
-    /// <typeparam name="T"></typeparam>
-    /// <returns></returns>
-    public T FindNode<T>(Node parent, string name) where T : Node
-    {
-        T node = null;
-        var child = parent.FindChild(name);
-        if (child is T)
-            node = child as T;
-        Insist.IsNotNull(node, $"Can't find a node with type {typeof(T).Name}");
-        return node;
-    }
-
-    public bool TryFindNode<T>(string name, out T node) where T : Node{
-        node = FindChild(name) as T;
-        if (node != null)
-            return true;
-        return false;
-    }
-
-    /// <summary>
-    /// 获取节点列表
-    /// </summary>
-    /// <param name="name"></param>
-    /// <param name="includeInternal"></param>
-    /// <typeparam name="T"></typeparam>
-    /// <returns></returns>
-    public List<T> FindNodes<T>(string name) where T : Node => FindChildren(name).OfType<T>().ToList();
-    public List<T> FindNodes<T>() where T : Node => FindChildren("*").OfType<T>().ToList();
-
-    
-    /// <summary>
-    /// 获取节点列表
-    /// </summary>
-    /// <param name="parent"></param>
-    /// <param name="name"></param>
-    /// <param name="includeInternal"></param>
-    /// <typeparam name="T"></typeparam>
-    /// <returns></returns>
-    public List<T> GetNodes<T>(Node parent, string name) where T : Node => parent.FindChildren(name).OfType<T>().ToList();
+    public T FindNode<T>(string name) where T : Node => NodeUtils.FindNode<T>(Instance, name);
+    public bool TryFindNode<T>(string name, out T node) where T : Node => NodeUtils.TryFindNode(Instance, name, out node);
+    public List<T> FindNodes<T>(string name) where T : Node => NodeUtils.FindNodes<T>(Instance, name);
+    public List<T> FindNodes<T>() where T : Node => NodeUtils.FindNodes<T>(Instance);
 
     #endregion
 
     #region ArchECS
-
+    public World World => _world;
     private World _world;
     private List<Arch.System.Group<float>> _systemGroups = [new ("default")];
     public void AddSystemGroup(string name) => _systemGroups.Add(new (name));

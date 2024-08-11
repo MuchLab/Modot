@@ -21,7 +21,7 @@ namespace Modot
     /// Nez includes a T4 template that will auto-generate the content of this file.
     /// See: https://github.com/prime31/Nez/blob/master/FAQs/ContentManagement.md#auto-generating-content-paths"
     /// </remarks>
-    class Resource
+    class Assets
     {
 <#
     // loop through all of our sourceFolders
