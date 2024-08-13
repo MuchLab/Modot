@@ -1,10 +1,8 @@
-﻿namespace Nez.AI.BehaviorTrees
+﻿namespace Modot.Portable.BehaviorTree;
+public enum TaskStatus
 {
-	public enum TaskStatus
-	{
-		Invalid,
-		Success,
-		Failure,
-		Running
-	}
+	Invalid,
+	Success,
+	Failure,
+	Running
 }
